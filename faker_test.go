@@ -2,6 +2,7 @@ package faker
 
 import (
 	"fmt"
+	"math"
 	"math/rand"
 	"reflect"
 	"strings"
@@ -78,6 +79,12 @@ func TestNew(t *testing.T) {
 func TestNewWithSeed(t *testing.T) {
 	seed := rand.NewSource(0)
 	f := NewWithSeed(seed)
+	Expect(t, fmt.Sprintf("%T", f), "faker.Faker")
+}
+
+func TestNewWithSeedNumber(t *testing.T) {
+	number := rand.Int63n(math.MaxInt64)
+	f := NewWithSeedNumber(number)
 	Expect(t, fmt.Sprintf("%T", f), "faker.Faker")
 }
 
