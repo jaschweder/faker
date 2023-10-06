@@ -31,6 +31,13 @@ type GeneratorInterface interface {
 	Int() int
 }
 
+// RandomBytes returns a fake random bytes for Faker
+func (f Faker) RandomBytes(n int) []byte {
+	b := make([]byte, n)
+	_, _ = rand.Read(b)
+	return b
+}
+
 // RandomDigit returns a fake random digit for Faker
 func (f Faker) RandomDigit() int {
 	return f.Generator.Int() % 10
